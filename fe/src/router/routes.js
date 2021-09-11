@@ -12,11 +12,15 @@ const routes = [
       { path: 'webinar', name:'webinar', component: () => import('pages/Webinar.vue') },
     ]
   },
+  {
+    path:'/testing', component: () => import('layouts/BaseLayout.vue')
+  },
 
   // Always leave this as last one,
   // but you can also remove it
   {
     path: '/:catchAll(.*)*',
+    name:'all',
     component: () => import('pages/Error404.vue')
   }
 ]
