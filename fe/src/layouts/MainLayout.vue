@@ -62,32 +62,32 @@
           :breakpoint="700"
           elevated
           class="bg-white text-black"
+          v-if="$q.screen.lt.md"
         >
           <q-scroll-area class="fit">
             <div class="q-pa-sm ">
               <q-tabs class="text-black martop" no-caps vertical>
-            <q-route-tab 
-              v-for="t in tabs" :key="t"
-              :label="t.label"
-              :to="t.route"
-              exact
-              active-class="custom-active"
-              content-class="own-size"
-              @click="drawerLeft = !drawerLeft"
-            />
-          </q-tabs>
-          <q-space class="gt-sm"/>
-          <q-tabs class="text-black" no-caps vertical>
-            <q-route-tab 
-              v-for="t in auth" :key="t"
-              :label="t.label"
-              :to="t.route"
-              exact
-              active-class="custom-active"
-              content-class="own-size"
-              @click="drawerLeft = !drawerLeft"
-            />
-          </q-tabs>
+                <q-route-tab 
+                  v-for="t in tabs" :key="t"
+                  :label="t.label"
+                  :to="t.route"
+                  exact
+                  active-class="custom-active"
+                  content-class="own-size"
+                  @click="drawerLeft = !drawerLeft"
+                />
+              </q-tabs>
+              <q-tabs class="text-black" no-caps vertical>
+                <q-route-tab 
+                  v-for="t in auth" :key="t"
+                  :label="t.label"
+                  :to="t.route"
+                  exact
+                  active-class="custom-active"
+                  content-class="own-size"
+                  @click="drawerLeft = !drawerLeft"
+                />
+              </q-tabs>
             </div>
           </q-scroll-area>
         </q-drawer>
@@ -97,6 +97,17 @@
       <q-page-container>
         <router-view />
       </q-page-container>
+
+      <q-footer elevated class="bg-grey-8 text-white">
+          <q-toolbar>
+            <q-toolbar-title>
+              <q-avatar>
+                <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+              </q-avatar>
+              <div>Title</div>
+            </q-toolbar-title>
+          </q-toolbar>
+      </q-footer>
     </q-layout>
   </div>
 </template>
@@ -138,7 +149,6 @@ const auth = [
 
 export default ({
   name: 'MainLayout',
-
   data(){
     return {
       tabs,
@@ -146,13 +156,6 @@ export default ({
       drawerLeft : false
     }
   },
-  methods:{
-    draw(){
-        if (this.me === 'masuk') {
-            return {name: 'daftar'}
-        }
-    }
-  }
 })
 </script>
 
