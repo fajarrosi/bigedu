@@ -1,13 +1,12 @@
 <template>
-  <div class="q-pa-md">
     <q-layout view="hHh Lpr lff"  class="shadow-2 rounded-borders">
       <q-header elevated class="bg-white">
         <q-toolbar 
         >
         
+        <q-btn flat round dense icon="menu" text-color="black" class="lt-md" @click="drawerLeft = !drawerLeft"/>
           <q-img src="~assets/logo/logo.png"  width="60px" class="q-my-none cursor-pointer" @click="$router.replace({ name: 'home' })"></q-img>
           <q-space />
-        <q-btn flat round dense icon="menu" text-color="black" class="lt-md" @click="drawerLeft = !drawerLeft"/>
         <!-- <q-btn stretch flat label="Beranda" @click="$router.push({ name: 'home'})" text-color="black"  no-caps class="gt-sm"/>
           <q-btn-dropdown auto-close stretch flat label="Services & Produk Kami" no-caps text-color="black" class="gt-sm">
             <q-list>
@@ -42,7 +41,23 @@
             />
           </q-tabs>
           <q-space class="gt-sm"/>
-          <q-tabs class="text-black gt-sm" no-caps>
+          <q-btn round class="bg-white q-mr-lg q-my-md" v-if="user.status === 'aktif'">
+                <q-avatar size="32px">
+                <img src="https://cdn.quasar.dev/logo-v2/svg/logo.svg" />
+                </q-avatar>
+                <q-menu class="q-mt-md"
+                >
+                    <q-list style="min-width: 100px">
+                        <q-item >
+                            <q-item-section>Manage Account</q-item-section>
+                        </q-item>
+                        <q-item clickable v-close-popup @click="Logout">
+                            <q-item-section>Logout</q-item-section>
+                        </q-item>
+                    </q-list>
+                </q-menu>
+            </q-btn>
+          <q-tabs class="text-black gt-sm" no-caps v-if="user.status !== 'aktif'">
             <q-route-tab 
               v-for="t in auth" :key="t"
               :label="t.label"
@@ -77,7 +92,7 @@
                   @click="drawerLeft = !drawerLeft"
                 />
               </q-tabs>
-              <q-tabs class="text-black" no-caps vertical>
+              <q-tabs class="text-black" no-caps vertical v-if="user.status !== 'aktif'">
                 <q-route-tab 
                   v-for="t in auth" :key="t"
                   :label="t.label"
@@ -109,7 +124,6 @@
           </q-toolbar>
       </q-footer>
     </q-layout>
-  </div>
 </template>
 
 <script>
@@ -156,12 +170,17 @@ export default ({
       drawerLeft : false
     }
   },
+  computed:{
+    user(){
+      return this.$store.state.auth.user
+    }
+  }
 })
 </script>
 
 <style lang="scss">
   .custom-active{
-    color: crimson !important;
+    color: $primary !important;
   }
   
   .own-size {

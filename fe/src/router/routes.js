@@ -10,11 +10,13 @@ const routes = [
       { path: 'masuk', name:'masuk', component: () => import('pages/Login.vue') },
       { path: 'daftar', name:'daftar', component: () => import('pages/Register.vue') },
       { path: 'webinar', name:'webinar', component: () => import('pages/Webinar.vue') },
+      {        path:'/otp', component: () => import('pages/Otp.vue')      },
     ]
   },
   {
     path:'/testing', component: () => import('layouts/BaseLayout.vue')
   },
+  
 
   // Always leave this as last one,
   // but you can also remove it
