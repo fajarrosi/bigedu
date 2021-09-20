@@ -113,15 +113,47 @@
         <router-view />
       </q-page-container>
 
-      <q-footer elevated class="bg-grey-8 text-white">
-          <q-toolbar>
-            <q-toolbar-title>
-              <q-avatar>
-                <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-              </q-avatar>
-              <div>Title</div>
-            </q-toolbar-title>
-          </q-toolbar>
+      <q-footer elevated class="bg-primary text-white q-pa-lg">
+          <div class="row justify-between">
+            <div class="col-md-2 col-sm-4 col-4">
+            <q-img src="~assets/logo/logo.png"  class="q-my-none cursor-pointer" @click="$router.replace({ name: 'home' })"></q-img>
+            </div>
+            <div class="col-md-2 col-sm-12 col-12">
+                    <h5 >Perusahaan</h5>
+                    <ul >
+                        <li ><a href="#tentang" >Tentang Kami</a></li>
+                        <li><a href="#blog" >Blog</a></li>
+                        <li><a href="#mentor" >Mentor Kami</a> </li>
+                    </ul>
+            </div>
+            <div class="col-md-3">
+                <h5>
+                    Produk dan Servis
+                </h5>
+                <ul class="footer-list">
+                    <li><a href="#webinar" >Webinar</a></li>
+                    <li><a href="#ra" >Research Academy</a></li>
+                    <li><a href="#itc" >Inhouse Training & Consultancy</a></li>
+                    
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5 class="quicksand">
+                    Kontak Kami
+                </h5>
+                <ul class="footer-list">
+                    <li class="nunito kontak">Phone : +60 16-451 2587</li>
+                    <li class="nunito kontak">Email : bigeduindosia@bigedu.com</li>
+                    <li>
+                        <div class="sosmed">
+                            <a href="#fb"> FB</a>
+                            <a href="#ig"> ig</a>
+                            <a href="#twit"> twit</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+          </div>
       </q-footer>
     </q-layout>
 </template>
@@ -134,7 +166,7 @@ const tabs = [
   },
   {
     label : 'Webinar',
-    route : { name: 'all' },
+    route : { name: 'webinar' },
   },
   {
     label : 'Research Academy',

@@ -45,6 +45,30 @@
           <p v-for="n in 15" :key="n">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit nihil praesentium molestias a adipisci, dolore vitae odit, quidem consequatur optio voluptates asperiores pariatur eos numquam rerum delectus commodi perferendis voluptate?
           </p>
+          
+            <q-card style="max-width: 300px">
+        <q-item>
+            <q-item-section avatar>
+            <q-skeleton type="QAvatar" />
+            </q-item-section>
+
+            <q-item-section>
+            <q-item-label>
+                <q-skeleton type="text" />
+            </q-item-label>
+            <q-item-label caption>
+                <q-skeleton type="text" />
+            </q-item-label>
+            </q-item-section>
+        </q-item>
+
+        <q-skeleton height="200px" square />
+
+        <q-card-actions align="right" class="q-gutter-md">
+            <q-skeleton type="QBtn" />
+            <q-skeleton type="QBtn" />
+        </q-card-actions>
+        </q-card>
         </q-page>
       </q-page-container>
     </q-layout>
