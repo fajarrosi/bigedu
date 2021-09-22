@@ -9,8 +9,9 @@ const routes = [
       { path: 'mentor', name:'mentor', component: () => import('pages/Mentor.vue') },
       { path: 'masuk', name:'masuk', component: () => import('pages/Login.vue') },
       { path: 'daftar', name:'daftar', component: () => import('pages/Register.vue') },
-      { path: 'webinar', name:'webinar', component: () => import('pages/Webinar.vue') },
-      {        path:'/otp', component: () => import('pages/Otp.vue')      },
+      { path: 'webinar', name:'webinar', component: () => import('pages/Webinar.vue')},
+      { path: 'webinar/:id', name:'webinar-detail', component: () => import('pages/WebinarDetail.vue')},
+      { path:'otp', component: () => import('pages/Otp.vue')},
     ]
   },
   {

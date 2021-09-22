@@ -1,80 +1,58 @@
-import {date} from 'quasar'
-const date1 = new Date()
-const date2 = new Date(2021,8,1)
-const unit = 'days'
-const diffdate = date.getDateDiff(date1,date2,unit)
+// import {date} from 'quasar'
+// const date1 = new Date()
+// const date2 = new Date(2021,8,1)
+// const unit = 'days'
+// const diffdate = date.getDateDiff(date1,date2,unit)
 export default function () {
   return {
     events:[
       {
-        evTitle:'Coba Search',
+        id:1,
+        evTitle:'Webinar 1',
         evThumbnails:'login.svg',
         diff:'30 Hari Lagi'
       },
       {
-        evTitle:'Lorem2 ipsum dolor sit amet consectetur adipisicing elit. Aliquid ad eos ipsa velit rem assumenda nisi nulla adipisci non amet.',
-        evThumbnails:'login.svg',
-        diff:`${diffdate} Hari Lagi`
-      },
-      {
-        evTitle:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ad eos ipsa velit rem assumenda nisi nulla adipisci non amet.',
+        id:2,
+        evTitle:'Webinar 2',
         evThumbnails:'login.svg',
         diff:'30 Hari Lagi'
       },
       {
-        evTitle:'Lorem2 ipsum dolor sit amet consectetur adipisicing elit. Aliquid ad eos ipsa velit rem assumenda nisi nulla adipisci non amet.',
-        evThumbnails:'login.svg',
-        diff:`${diffdate} Hari Lagi`
-      },
-      {
-        evTitle:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ad eos ipsa velit rem assumenda nisi nulla adipisci non amet.',
+        id:3,
+        evTitle:'Webinar 3',
         evThumbnails:'login.svg',
         diff:'30 Hari Lagi'
       },
       {
-        evTitle:'Lorem2 ipsum dolor sit amet consectetur adipisicing elit. Aliquid ad eos ipsa velit rem assumenda nisi nulla adipisci non amet.',
-        evThumbnails:'login.svg',
-        diff:`${diffdate} Hari Lagi`
-      },
-      {
-        evTitle:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ad eos ipsa velit rem assumenda nisi nulla adipisci non amet.',
+        id:4,
+        evTitle:'Webinar 4',
         evThumbnails:'login.svg',
         diff:'30 Hari Lagi'
       },
       {
-        evTitle:'Lorem2 ipsum dolor sit amet consectetur adipisicing elit. Aliquid ad eos ipsa velit rem assumenda nisi nulla adipisci non amet.',
-        evThumbnails:'login.svg',
-        diff:`${diffdate} Hari Lagi`
-      },
-      {
-        evTitle:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ad eos ipsa velit rem assumenda nisi nulla adipisci non amet.',
+        id:5,
+        evTitle:'Webinar 5',
         evThumbnails:'login.svg',
         diff:'30 Hari Lagi'
       },
       {
-        evTitle:'Lorem2 ipsum dolor sit amet consectetur adipisicing elit. Aliquid ad eos ipsa velit rem assumenda nisi nulla adipisci non amet.',
-        evThumbnails:'login.svg',
-        diff:`${diffdate} Hari Lagi`
-      },
-      {
-        evTitle:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ad eos ipsa velit rem assumenda nisi nulla adipisci non amet.',
+        id:6,
+        evTitle:'Webinar 6',
         evThumbnails:'login.svg',
         diff:'30 Hari Lagi'
       },
       {
-        evTitle:'Lorem2 ipsum dolor sit amet consectetur adipisicing elit. Aliquid ad eos ipsa velit rem assumenda nisi nulla adipisci non amet.',
-        evThumbnails:'login.svg',
-        diff:`${diffdate} Hari Lagi`
-      },
-      {
-        evTitle:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ad eos ipsa velit rem assumenda nisi nulla adipisci non amet.',
+        id:7,
+        evTitle:'Webinar 7',
         evThumbnails:'login.svg',
         diff:'30 Hari Lagi'
       },
       {
-        evTitle:'Lorem2 ipsum dolor sit amet consectetur adipisicing elit. Aliquid ad eos ipsa velit rem assumenda nisi nulla adipisci non amet.',
+        id:8,
+        evTitle:'Webinar 8',
         evThumbnails:'login.svg',
-        diff:`${diffdate} Hari Lagi`
+        diff:'30 Hari Lagi'
       }
     ]
   }

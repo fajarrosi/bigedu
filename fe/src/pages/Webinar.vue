@@ -1,7 +1,7 @@
 <template >
     <q-page padding>
         <div class="row justify-center">
-            <div class="col-8">
+            <div class="col-12">
                 <q-card>
                     <q-card-section>
                         <q-skeleton type="QInput" v-if="initial"/>
@@ -32,53 +32,49 @@
                 </q-card>
             </div> -->
 
-            <div class="col-md-3 q-pa-lg col-sm-5 col-10" v-for="webinar in searchkey" :key="webinar">
+            <div class="col-md-3 q-pa-lg col-sm-6 col-12" v-for="webinar in getdata" :key="webinar">
                 <q-card>
-                    <q-card-section >
-                        <q-list  separator>
-                            <q-item >
-                                <q-item-section v-if="initial">
+                    <q-skeleton height="300px" square v-if="initial"/>
+                    <q-img src="https://cdn.quasar.dev/img/mountains.jpg" height="300px" v-else/>
+                    <q-list  separator v-if="initial">
+                            <q-item>
+                                <q-item-section >
                                     <q-skeleton type="text" height="50px" />
-                                    <q-skeleton height="150px" square />
-                                </q-item-section>
-                                <q-item-section v-else>
-                                    <q-item-label class="text-primary text-justify  text-body1 web-title">{{webinar.evTitle}}</q-item-label>
-                                    <q-img src="https://cdn.quasar.dev/img/mountains.jpg" class="q-mt-lg"/>
+                                    <q-skeleton type="text" height="100px" />
                                 </q-item-section>
                             </q-item>
-
-                            <q-item >
-                                <q-item-section v-if="initial">
-                                    <div class="row justify-between">
-                                    <q-skeleton type="text" height="50px" class="col-7 col-md-5"/>
-                                    <q-skeleton type="QBtn" height="50px" class="col-4 col-md-5"/>
-
-                                    </div>
+                            <q-item>
+                                <q-item-section>
+                                    <q-skeleton type="text" height="50px" />
                                 </q-item-section>
-                                <q-item-section v-else>
-                                <q-item-label caption>
-                                    <div class="row justify-between items-center">
-                                        <div class="col-8 col-md-6">
-                                            <q-icon name="event" />
-                                            {{webinar.diff}}
-                                        </div>
-                                        <q-btn color="primary" label="Daftar" class="col-4 col-md-6"/>
-                                    </div>
-                                </q-item-label>
+                                <q-item-section thumbnail>
+                                    <q-skeleton type="QBtn" height="30px" class="q-mr-md"/>
                                 </q-item-section>
                             </q-item>
-                        </q-list>
+                    </q-list>
+                    <q-card-section class="q-pb-none" v-else>
+                        <div class="text-h6 text-justify ellipsis-3-lines">{{webinar.evTitle}}</div>
                     </q-card-section>
+                    <q-card-section v-if="!initial">
+                        <div class="text-caption ellipsis-3-lines text-justify">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae nesciunt dolores tenetur a eligendi reiciendis minima harum, debitis reprehenderit. Porro!
+                        </div>
+                    </q-card-section>
+                    <q-separator v-if="!initial"/>
+                    <q-card-actions align="around" v-if="!initial">
+                        <q-icon name="event" />
+                        30 Januari 2021
+                        <q-btn label="Selengkapnya" no-caps class="text-primary" flat dense :to="{name:'webinar-detail',params: {id: webinar.id}}"/>
+                    </q-card-actions>
                 </q-card>
             </div>
             
         </div>
         <div class="q-pa-lg flex flex-center">
                 <q-pagination
-                v-model="current"
+                v-model="page"
                 color="primary"
-                :max="10"
-                :max-pages="6"
+                :max="Math.ceil(searchkey.length/totalPages)"
                 boundary-numbers
                 />
         </div>
@@ -96,6 +92,8 @@ export default {
             load:false,
             btndisabled:false,
             initial:true,
+            page:1,
+            totalPages:8,
         }
     },
     mounted(){
@@ -118,18 +116,14 @@ export default {
     },
     computed:{
         searchkey(){
-            return this.$store.state.webinar.events.filter((webinar)=> webinar.evTitle.toLowerCase().includes(this.search.toLowerCase()))
+            return this.$store.state.webinar.events
+            .filter((webinar)=> webinar.evTitle.toLowerCase().includes(this.search.toLowerCase()))
+            
+        },
+        getdata(){
+            return this.searchkey
+            .slice((this.page-1)*this.totalPages,(this.page-1)*this.totalPages+this.totalPages)
         }
     }   
 }
 </script>
-<style lang="scss">
-    .web-title{
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 2; /* number of lines to show */
-        -webkit-box-orient: vertical;
-        max-height: 3.6em;
-        overflow: hidden;
-    }
-</style>
